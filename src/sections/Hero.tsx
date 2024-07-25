@@ -1,12 +1,25 @@
+"use client";
+
 import ArrowIcon from "@/assets/arrow-right.svg";
 import cogImage from "@/assets/cog.png";
 import cylinderImage from "@/assets/cylinder.png";
 import noodleImage from "@/assets/noodle.png";
 import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function Hero() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start 0.15", "end start"],
+  });
+
+  const translateY = useTransform(scrollYProgress, [0, 1], [50, -150]);
+  const rotateZ = useTransform(scrollYProgress, [0,1], ["0deg", "90deg"]);
+
   return (
-    <section className="pt-8 pb-20 md:pt-5 md:pb-10 bg-hero-gradient overflow-x-clip">
+    <section ref={heroRef} className="pt-8 pb-20 md:pt-5 md:pb-10 bg-hero-gradient overflow-x-clip">
       <div className="container">
         <div className="md:flex items-center">
           <div className="md:w-[478px]">
@@ -32,30 +45,64 @@ export default function Hero() {
           </div>
 
           <div className="max-md:mt-20 md:h-[648px] md:flex-1 relative">
-            <Image
-              src={cogImage}
-              alt="Cog Image"
-              draggable={false}
-              className="md:absolute md:h-full md:w-auto md:max-w-none md:-left-6"
-            />
+            <motion.div
+              className="md:absolute md:h-full md:w-auto md:max-w-none md:-left-6 cursor-grab active:cursor-grabbing"
+              animate={{
+                translateY: [-30, 30],
+              }}
+              drag
+              dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
+              dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
+              dragElastic={0.5}
+              transition={{
+                repeat: Infinity,
+                repeatType: "mirror",
+                ease: "easeInOut",
+                duration: 2,
+              }}
+            >
+              <Image
+                src={cogImage}
+                alt="Cog Image"
+                draggable={false}
+                className="h-full w-auto object-contain"
+              />
+            </motion.div>
 
-            <Image 
-              src={cylinderImage}
-              alt="Cylinder Image"
-              width={220}
-              height={220}
-              draggable={false}
-              className="hidden md:block -top-8 -left-32 md:absolute"
-            />
+            <motion.div
+              drag
+              dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
+              dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
+              dragElastic={0.5}
+              style={{ translateY, rotateZ }}
+              className="hidden md:block -top-8 -left-32 md:absolute cursor-grab active:cursor-grabbing"
+            >
+              <Image
+                src={cylinderImage}
+                alt="Cylinder Image"
+                width={220}
+                height={220}
+                draggable={false}
+              />
+            </motion.div>
 
-            <Image 
-              src={noodleImage}
-              alt="Noodle Image"
-              width={220}
-              height={220}
-              draggable={false}
-              className="hidden md:block top-[524px] left-[448px] rotate-[30deg] md:absolute"
-            />
+
+            <motion.div
+              className="hidden w-48 md:block top-[524px] left-[448px] rotate-[30deg] md:absolute cursor-grab active:cursor-grabbing"
+              drag
+              dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
+              dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
+              dragElastic={0.5}
+              style={{ translateY, rotateZ }}
+            >
+              <Image
+                src={noodleImage}
+                alt="Noodle Image"
+                width={220}
+                height={220}
+                draggable={false}
+              />
+            </motion.div>
           </div>
         </div>
       </div>

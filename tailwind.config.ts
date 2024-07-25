@@ -23,6 +23,7 @@ const config: Config = {
       },
       backgroundImage: {
         'hero-gradient': "radial-gradient(ellipse 200% 100% at bottom left, #183EC2, #EAEEFE 66%)",
+        'rainbow-gradient': "linear-gradient(to right, #DD7DDF, #E1CD86, #BBCB92, #71C2EF, #3BFFFF, #DD7DDF)",
       },
     },
   },
