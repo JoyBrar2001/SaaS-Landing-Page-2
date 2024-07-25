@@ -136,10 +136,12 @@ function PricingCard({ title, monthlyPrice, buttonText, popular, inverse, featur
 
 export default function Pricing() {
   return (
-    <section className="py-24">
+    <section className="py-24 bg-gradient-to-t from-[#FFF] to-[#D2DCFF]">
       <div className="container">
         <div className="section-heading">
-          <h2 className="section-title">Pricing</h2>
+          <h2 className="section-title">
+            Pricing
+          </h2>
           <p className="section-description mt-5">
             Free Forever. Upgrade for unlimited tasks, better security, and exclusive features.
           </p>
