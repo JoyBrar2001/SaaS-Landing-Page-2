@@ -29,7 +29,7 @@ export default function ProductShowcase() {
     <section ref={productRef} className="bg-gradient-to-b from-[#FFF] to-[#D2DCFF] py-24 overflow-x-clip">
       <div className="container">
         <div className="flex justify-center">
-          <div className="text-sm inline-flex border border-[#222]/10 px-3 py-1 rounded-lg tracking-tight">
+          <div className="tag">
             Boost your productivity
           </div>
         </div>

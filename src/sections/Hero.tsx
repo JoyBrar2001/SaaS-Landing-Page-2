@@ -23,7 +23,7 @@ export default function Hero() {
       <div className="container">
         <div className="md:flex items-center">
           <div className="md:w-[478px]">
-            <div className="text-sm inline-flex border border-[#222]/10 px-3 py-1 rounded-lg tracking-tight">
+            <div className="tag">
               Version 2.0 is here
             </div>
 

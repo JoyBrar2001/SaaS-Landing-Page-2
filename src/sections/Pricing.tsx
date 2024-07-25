@@ -74,7 +74,7 @@ function PricingCard({ title, monthlyPrice, buttonText, popular, inverse, featur
     <motion.div
       ref={ref}
       className={twMerge(
-        "p-10 border border-[#F1F1F1] rounded-3xl shadow-md max-w-sm w-full",
+        "card",
         inverse && "border-black bg-black text-white"
       )}
       initial={{ opacity: 0, y: 50 }}
