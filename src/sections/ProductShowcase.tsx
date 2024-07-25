@@ -1,3 +1,5 @@
-export const ProductShowcase = () => {
-  return null;
+export default function ProductShowcase () {
+  return (
+    <>Product Showcase</>
+  );
 };
