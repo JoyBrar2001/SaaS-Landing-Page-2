@@ -88,8 +88,8 @@ const TestimonialsColumn = ({ column, className, duration }: any) => {
       >
         {[...new Array(2)].fill(0).map((_, index) => (
           <React.Fragment key={index}>
-            {column.map(({ text, imageSrc, name, username }: any) => (
-              <div className="card">
+            {column.map(({ text, imageSrc, name, username }: any, index: number) => (
+              <div className="card" key={index}>
                 <div>
                   {text}
                 </div>
